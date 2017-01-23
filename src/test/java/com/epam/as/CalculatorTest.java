@@ -1,15 +1,21 @@
-package com.epam.as.test;
+package com.epam.as;
 
 import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
+/**
+ * Created by Artur_Shamsutdzinau on 1/23/2017.
+ */
 public class CalculatorTest {
     private Calculator calculator;
 
     @BeforeClass
     public void setup() {
-        System.out.println("CalculatorTest is started");
+        System.out.println("com.epam.as.CalculatorTest is started");
         calculator = new Calculator();
     }
 
@@ -131,7 +137,7 @@ public class CalculatorTest {
 
     @AfterClass
     public void teardown() {
-        System.out.println("CalculatorTest is finished");
+        System.out.println("com.epam.as.CalculatorTest is finished");
     }
 
     @DataProvider(name = "test1")

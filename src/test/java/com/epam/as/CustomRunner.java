@@ -1,6 +1,5 @@
 package com.epam.as;
 
-import com.epam.as.test.CalculatorTest;
 import org.testng.TestNG;
 
 public class CustomRunner {
