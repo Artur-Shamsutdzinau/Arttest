@@ -1,6 +1,5 @@
 package framework.patterns.decorator;
 
-import framework.util.JSHighlighter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +32,6 @@ public class CustomWebDriverDecorator implements WebDriver {
     }
 
     public WebElement findElement(By by) {
-        JSHighlighter.highlightElement(webDriver.findElement(by), "yellow", webDriver);
         return webDriver.findElement(by);
     }
 
