@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Mail.ru test" verbose="1">
+    <test name="Send_Email">
+        <classes>
+            <class name="framework.test.MailruTest"/>
+        </classes>
+    </test>
+</suite>
