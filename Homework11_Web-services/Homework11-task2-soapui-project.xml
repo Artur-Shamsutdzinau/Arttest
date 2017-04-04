@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default environment" name="Homework11_task2" resourceRoot="" soapui-version="6.0.0" abortOnError="false" runType="SEQUENTIAL" id="8deb3f44-9361-43ec-91ae-27649755b72f" lastOpened="2017-04-03T18:58:57.733+03:00" xmlns:con="http://eviware.com/soapui/config">
+    <con:description>Demonstrates API calls to a local REST-based virtual service for creating a user account.</con:description><con:settings/>
+    
+    <con:interface xsi:type="con:RestService" id="628e8dfd-c2e9-4a5f-890d-5964bdd084f6" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://geoip.elib.ru" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://geoip.elib.ru</con:endpoint></con:endpoints><con:resource name="Getdata_mini.pl" path="/cgi-bin/getdata_mini.pl" id="3780428c-63bc-4edd-921c-cf54cf7b511c"><con:settings/><con:parameters><con:parameter><con:name>ip</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>sid</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="Getdata_mini.pl" id="c1e644c8-7420-47c4-89f8-09be678155ae" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>text/plain; charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="c74fb6fc-e5ae-4098-9135-d76b5f89cec2" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="81.19.72.36"/>
+  <con:entry key="sid" value="71T1EJKF"/>
+</con:parameters><con:parameterOrder><con:entry>ip</con:entry><con:entry>sid</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface>
+    <con:testSuite id="c808d444-3ed6-4c5b-8740-117ea438bd2b" name="GeoIP"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:runType>SEQUENTIAL</con:runType><con:testCase id="a0556cac-935b-46d6-a1b7-ab3208e5541d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="StatusCodeTest" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="GetStatusCode=200" id="dd1f3e59-d4b7-4237-a864-6e4081147639"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="REST Request" id="0af66665-cb86-4413-90ae-3d516000a547" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="81.19.72.36"/>
+  <con:entry key="sid" value="8L4CQVY4"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckStatusCode=200" id="96ae2198-bb2f-4c62-8080-1e8db6bc5238"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def httpResponseHeaders = context.testCase.testSteps["GetStatusCode=200"].testRequest.response.responseHeaders
+def httpStatus = httpResponseHeaders["#status#"]
+def httpStatusCode = (httpStatus =~ "[1-5]\\d\\d")[0]
+assert['HTTP/1.1 200 OK'] == httpStatus
+log.info("HTTP status code: " + httpStatusCode)</script></con:config></con:testStep><con:properties/><con:reportParameters/><con:breakPoints><con:testStepId>dd1f3e59-d4b7-4237-a864-6e4081147639</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>96ae2198-bb2f-4c62-8080-1e8db6bc5238</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints></con:testCase><con:testCase id="bdea7400-260d-45ba-aedd-c7bd99b2d91d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="ContentTest" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="GetContentMoscow" id="9ad4fbcc-b611-4248-a710-e025f93106e8"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="REST Request" id="70b3c739-d8b8-4b25-ac6a-bd8fd2c1be26" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="213.171.39.67"/>
+  <con:entry key="sid" value="5AELIMJW"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckContentMoscow" id="fe0bc934-03e9-4aa2-8b10-0b644ccc3b1d"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def responseContent = context.testCase.testSteps["GetContentMoscow"].testRequest.response.responseContent
+assert responseContent.contains('Москва') </script></con:config></con:testStep><con:testStep type="restrequest" name="GetContentPeterburg" id="6347e0e6-f392-43d7-8fbc-32ad508e297e"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetContentPeterburg" id="169b42b3-15a8-4b84-b015-ae3b58d8df52" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="185.167.121.9"/>
+  <con:entry key="sid" value="4WK1QI58"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckContentPeterburg" id="5077ef31-bf7a-4275-b51d-03d33349cf7e"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def responseContent = context.testCase.testSteps["GetContentPeterburg"].testRequest.response.responseContent
+assert responseContent.contains('Санкт-Петербург') </script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase id="8db9dfb5-4f50-445a-a715-5568d8f69255" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="SameTownTest" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="GetVolgograd_188.233.189.44" id="c1adad10-25cb-4160-9b78-84d9dbc50732"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetVolgograd_188.233.189.44" id="dccef491-bfd3-488b-be67-7848394ab740" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="188.233.189.44"/>
+  <con:entry key="sid" value="71T1EJKF"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GetVolgograd_188.233.189.168" id="3fb9863c-d620-481b-946c-5a5be74d11d4"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetVolgograd_188.233.189.168" id="466c8b51-1b96-422a-998a-a54504693822" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="188.233.189.168"/>
+  <con:entry key="sid" value="71T1EJKF"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckTheSameTown" id="6ffe03a8-7e01-419a-b634-3b58eedc254e"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def responseContent1 = context.testCase.testSteps["GetVolgograd_188.233.189.44"].testRequest.response.responseContent
+def responseContent2 = context.testCase.testSteps["GetVolgograd_188.233.189.168"].testRequest.response.responseContent
+assert responseContent1.contains(responseContent2) </script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase id="819240ba-4b39-4c15-9e10-a57c9eca8925" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="ErrorsTest" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="GetErrorCode=10" id="ab136861-dcdd-4c51-9102-0371fe2cadb7"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetErrorCode10" id="dcf5d74d-adc1-4bbf-85df-724f28ac399e" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="192.168.1"/>
+  <con:entry key="sid" value="5AELIMJW"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckErrorCode=10" id="2dbf3b63-c2be-46e8-9687-7c85c3bc3a6b"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def responseContent = context.testCase.testSteps["GetErrorCode=10"].testRequest.response.responseContent
+assert responseContent.contains('E10') </script></con:config></con:testStep><con:testStep type="restrequest" name="GetErrorCode=205" id="05859557-42f1-4f6d-8fed-ea52e99b7fcd"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetErrorCode=205" id="e591a542-ab62-43ba-b5c4-ccf9d7c9fc2d" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="192.168.1.1"/>
+  <con:entry key="sid" value="2ABVKLRI"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckErrorCode=205" id="d9667167-1da5-42e2-b2e4-029c3c52d77a"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def responseContent = context.testCase.testSteps["GetErrorCode=205"].testRequest.response.responseContent
+assert responseContent.contains('E205') </script></con:config></con:testStep><con:properties/><con:reportParameters/><con:breakPoints><con:testStepId>2dbf3b63-c2be-46e8-9687-7c85c3bc3a6b</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>d9667167-1da5-42e2-b2e4-029c3c52d77a</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints></con:testCase><con:testCase id="4f111309-fbf7-471d-967e-cd34942d8d51" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="ResponseHeaderTest" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="GetResponseHeader=gzip" id="5fa89b1e-98f4-4d7d-932c-fbe475bf5ce6"><con:settings/><con:config service="http://geoip.elib.ru" methodName="Getdata_mini.pl" resourcePath="/cgi-bin/getdata_mini.pl" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetResponseHeader=gzip" id="81ade4e2-83e2-4f3b-8d4b-1c33c2ea9f71" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://geoip.elib.ru</con:endpoint><con:request/><con:originalUri>http://geoip.elib.ru/cgi-bin/getdata_mini.pl</con:originalUri><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters>
+  <con:entry key="ip" value="185.167.121.29"/>
+  <con:entry key="sid" value="2ABVKLRI"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script_CheckResponseHeader=gzip" id="75ec3e92-8be5-4bda-adc7-a29c10d5189a"><con:settings/><con:config><script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def httpResponseHeaders = context.testCase.testSteps["GetResponseHeader=gzip"].testRequest.response.responseHeaders
+def httpContentEncoding = httpResponseHeaders["Content-Encoding"]
+assert httpContentEncoding.contains('gzip')</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:restMockService port="8096" path="/" name="Account creation mock" host="localhost" id="c92f5b66-e726-4417-bb48-e3b79ab9dc96" docroot="">
+        <con:settings/>
+        <con:properties/>
+        <con:constraints><con:congestion>0</con:congestion><con:inputBandwidth>-1</con:inputBandwidth><con:outputBandwidth>-1</con:outputBandwidth><con:maxThreadPoolCapacity>20</con:maxThreadPoolCapacity><con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity><con:virtError><con:start>0</con:start><con:endless>true</con:endless></con:virtError></con:constraints><con:headerValidator/><con:restMockAction name="accountcreation" method="GET" resourcePath="/accountcreation" id="bd608e76-0936-40e0-ba81-ec1e66c42bcb">
+            <con:settings/>
+            <con:defaultResponse>Form View</con:defaultResponse>
+            <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+            <con:dispatchConfig/><con:dispatchXPath/><con:routeScript/><con:response name="Form View" httpResponseStatus="200" mediaType="text/html" id="d9c30178-64c2-40fa-9b42-4e9dbb8f0827" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content">
+	</head>
+
+	<body>
+  		<h1>Welcome!</h1>
+  		<form action="accountcreation" method="post" name="account_registration_form">
+  			<input type="text" name="username" placeholder="John Doe" />
+			<input type="password" name="password" />
+			<input type="submit" name="password" />
+		</form>
+  	</body>
+</html>]]></con:responseContent>
+            </con:response>
+        </con:restMockAction>
+        <con:restMockAction name="accountcreation" method="POST" resourcePath="/accountcreation" id="0c4708e7-5662-494d-a5ed-e6025c53694c">
+            <con:settings/>
+            <con:defaultResponse>Successful</con:defaultResponse>
+            <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+            <con:dispatchConfig/><con:dispatchXPath/><con:routeScript/><con:response name="Successful" httpResponseStatus="200" mediaType="text/html" id="5721044e-32e6-4c8a-ac45-7c51f5a9f256" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content"/>
+	</head>
+
+	<body>
+  		<h1>Welcome!</h1>
+  		<p>You have successfully registered your account!</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+            <con:response name="Already Existing User" httpResponseStatus="200" mediaType="text/html" id="94b4f8ac-497c-41d0-9636-c53eadf03b41" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content">
+	</head>
+
+	<body>
+  		<h1>User already exists</h1>
+  		<p>A user has already registered with the selected username - try another.</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+            <con:response name="Internal Server Error" httpResponseStatus="500" mediaType="text/html" id="7eadb407-869a-4ef9-a3b7-f080c596df84" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Internal Server Error</title>
+		<meta name="description" content="SoapUI Sample content"/>
+	</head>
+
+	<body>
+  		<h1>The server was unable to serve your request</h1>
+  		<p>Due to some technical error the server was unable to complete the request, pleas come back later.</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+        </con:restMockAction>
+    </con:restMockService>
+    <con:savedRecentRuns>1</con:savedRecentRuns><con:requirements/>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:databaseConnectionContainer/>
+    <con:oAuth2ProfileContainer/>
+    <con:reporting>
+        <con:xmlTemplates/>
+        <con:parameters/>
+    </con:reporting>
+    <con:sensitiveInformation/>
+<con:authRepository/><con:tags/></con:soapui-project>
